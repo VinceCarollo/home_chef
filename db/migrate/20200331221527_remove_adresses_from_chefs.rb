@@ -7,9 +7,9 @@ class RemoveAdressesFromChefs < ActiveRecord::Migration[6.0]
   end
 
   def down
-    add_column :chefs, :street
-    add_column :chefs, :city
-    add_column :chefs, :state
-    add_column :chefs, :zip
+    add_column :chefs, :street, :string
+    add_column :chefs, :city, :string
+    add_column :chefs, :state, :string
+    add_column :chefs, :zip, :string
   end
 end

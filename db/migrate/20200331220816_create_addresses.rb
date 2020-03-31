@@ -5,8 +5,8 @@ class CreateAddresses < ActiveRecord::Migration[6.0]
       t.string :city, null: false
       t.string :state, null: false
       t.string :zip, null: false
-      t.integer :addressable_id, null: false
-      t.string :addressable_type, null: false
+      t.integer :addressable_id
+      t.string :addressable_type
 
       t.timestamps
     end

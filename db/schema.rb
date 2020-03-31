@@ -20,8 +20,8 @@ ActiveRecord::Schema.define(version: 2020_03_31_221527) do
     t.string "city", null: false
     t.string "state", null: false
     t.string "zip", null: false
-    t.integer "addressable_id", null: false
-    t.string "addressable_type", null: false
+    t.integer "addressable_id"
+    t.string "addressable_type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
