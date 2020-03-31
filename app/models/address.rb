@@ -1,4 +1,4 @@
 class Address < ApplicationRecord
-  belongs_to :chef
-  belongs_to :addressable, polymorphic: true
+  belongs_to :chef, optional: true
+  belongs_to :addressable, polymorphic: true, optional: true
 end
