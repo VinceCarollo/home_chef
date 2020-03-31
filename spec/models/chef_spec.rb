@@ -27,4 +27,8 @@ RSpec.describe Chef, type: :model do
       expect(chef.update(self_description: nil)).to be false
     end
   end
+
+  describe 'associations' do
+    it { should have_one(:address) }
+  end
 end
