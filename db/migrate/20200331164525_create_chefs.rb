@@ -4,6 +4,7 @@ class CreateChefs < ActiveRecord::Migration[6.0]
       t.string :email, null: false
       t.string :first_name, null: false
       t.string :last_name, null: false
+      t.string :street, null: false
       t.string :city, null: false
       t.string :state, null: false
       t.string :zip, null: false
