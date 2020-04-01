@@ -26,6 +26,8 @@ RSpec.describe Chef, type: :model do
       expect(chef.update(self_description: '')).to be false
       expect(chef.update(self_description: nil)).to be false
     end
+
+    it { should validate_length_of(:password).is_at_least(6).is_at_most(20) }
   end
 
   describe 'associations' do
