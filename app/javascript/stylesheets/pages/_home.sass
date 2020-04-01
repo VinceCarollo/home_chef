@@ -18,7 +18,7 @@ home
     p 
       font-size: 25px
 
-    button
+    button, input
       border-radius: 40px
       font-family: $font-stack
       font-size: 50px
@@ -30,6 +30,10 @@ home
         animation-name: button
         animation-fill-mode: forwards
         animation-duration: 1s
+
+      &:active
+        background-color: $color4
+        color: $primary-color
 
   .question
     margin-top: 60px

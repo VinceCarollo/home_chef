@@ -5,6 +5,6 @@
   <div class='buttons'>
     <button>Lookin</button>
     <p>or</p>
-    <button>Cookin</button>
+    <%= button_to "Cookin", { controller: :chefs, action: "new" }, :method => :get %>
   </div>
 </home>
