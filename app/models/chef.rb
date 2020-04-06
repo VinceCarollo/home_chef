@@ -8,6 +8,7 @@ class Chef < ApplicationRecord
             :last_name,
             :self_description,
             :address,
+            :specialty,
             empty: false, 
             presence: true
 

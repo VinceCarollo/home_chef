@@ -27,6 +27,11 @@ RSpec.describe Chef, type: :model do
       expect(chef.update(self_description: nil)).to be false
     end
 
+    it 'specialty' do
+      expect(chef.update(specialty: '')).to be false
+      expect(chef.update(specialty: nil)).to be false
+    end
+
     it { should validate_length_of(:password).is_at_least(6).is_at_most(20) }
   end
 

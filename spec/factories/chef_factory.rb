@@ -5,6 +5,7 @@ FactoryBot.define do
     email  { "JohnDoe@example.com" }
     self_description { 'Best chef ever' }
     password { 'password' }
+    specialty { 'tex mex' }
     
     association :address, factory: :address
   end
