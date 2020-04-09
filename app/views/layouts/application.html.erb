@@ -10,6 +10,10 @@
   </head>
 
   <body>
+    <div class='alert'>
+      <p id='alert-message'></p>
+      <span id='closebtn' onclick="this.parentElement.style.display='none';">&times;</span> 
+    </div>
     <%= yield %>
   </body>
 </html>
