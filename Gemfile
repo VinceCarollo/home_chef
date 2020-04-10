@@ -26,6 +26,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 # Global
 gem 'bcrypt'
+gem 'geocodio'
+gem 'figaro'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
