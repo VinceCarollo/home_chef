@@ -7,7 +7,6 @@ class Chef < ApplicationRecord
   validates :first_name,
             :last_name,
             :self_description,
-            :address,
             :specialty,
             empty: false, 
             presence: true
