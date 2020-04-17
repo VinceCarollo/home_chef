@@ -1,9 +1,5 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
+# HomeChef
+#### Rails 6 app to explore webpacker
 
 * Ruby version
 
