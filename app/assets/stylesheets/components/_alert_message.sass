@@ -1,11 +1,12 @@
-#alert, #flash-alert
+#alert
   display: none
-  height: 50px
+  min-height: 50px
   width: 100%
   background-color:#9e1c1c
   color: white
   position: sticky
   top: 0px
+  overflow: auto
 
   #alert-message
     display: inline-block
@@ -25,6 +26,3 @@
 
     &:hover
       color: black
-
-#flash-alert
-  display: inline-block
