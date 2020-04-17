@@ -1,6 +1,6 @@
-<div class='new-chef-form'>
+<div class='new-chef-form-container'>
   <h1>Sign up to be added to HomeChef's list of local Chefs</h1>
-  <%= form_with model: @chef do |f| %>
+  <%= form_with model: @chef, id:'new-chef-form' do |f| %>
     <%= f.label :email , class:'new-chef-label'%>
     <%= f.text_field :email, class:'new-chef-input' %>
     <%= f.label :password , class:'new-chef-label'%>
