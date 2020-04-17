@@ -21,10 +21,10 @@
     <%= f.label :specialty , class:'new-chef-label'%><br>
     <%= f.text_field :specialty, class:'new-chef-input', placeholder:'Cantonese' %><br>
     <%= f.label 'Please Write a Breif Description of Yourself and Your Cooking', class:'new-chef-label' %><br>
-    <%= f.text_area :self_desription, class:'new-chef-input self-description' %><br>
+    <%= f.text_area :self_description, class:'new-chef-input self-description' %><br>
     <p class='new-chef-label'>Please provide your zip code and how far you are willing to travel</p><br>
     <%= f.text_field :zip, class:'new-chef-input new-chef-zip' %>
-    <%= f.select :distance, options_for_select(10..100), class:'new-chef-input new-chef-distance' %>miles
+    <%= f.select :travel_distance, options_for_select(10..100), class:'new-chef-input new-chef-distance' %>miles
     <p id='unavailable-question'>On which days of the week can you commit to being a HomeChef?</p>
     <%= f.check_box :monday, class:'new-chef-input day-checkbox' %>
     <%= f.label :monday, class: 'day-checkbox day-label' %>
