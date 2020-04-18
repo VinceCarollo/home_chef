@@ -24,8 +24,6 @@ const newChef = () => {
 
 
   $(document).ready(() => {
-    console.log('hi');
-
     $('#new-chef-form')
       .on("ajax:error", (e) => {
         let status = e.originalEvent.detail[2].status
