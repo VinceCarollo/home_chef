@@ -25,6 +25,22 @@ const newChef = () => {
 
   $(document).ready(() => {
     $('#new-chef-form')
+      .on("ajax:beforeSend", () => {
+        let mondayBox = document.getElementById('chef_monday').checked
+        let tuesdayBox = document.getElementById('chef_tuesday').checked
+        let wednesdayBox = document.getElementById('chef_wednesday').checked
+        let thursdayBox = document.getElementById('chef_thursday').checked
+        let fridayBox = document.getElementById('chef_friday').checked
+        let saturdayBox = document.getElementById('chef_saturday').checked
+        let sundayBox = document.getElementById('chef_sunday').checked
+        
+        if (mondayBox || tuesdayBox || wednesdayBox || thursdayBox || fridayBox || saturdayBox || sundayBox) {
+          return true
+        } else {
+          showWarning('You must be available atleast one day')
+          return false
+        }
+      })
       .on("ajax:error", (e) => {
         let status = e.originalEvent.detail[2].status
         let response = e.originalEvent.detail[2].response
