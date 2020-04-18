@@ -12,8 +12,7 @@ class Chef < ApplicationRecord
             presence: true
 
   validates :password, 
-            length: { minimum: 6, maximum: 20 }, 
-            presence: true
+            length: { minimum: 6, maximum: 20 }
 
   has_one :address, as: :addressable
 end
