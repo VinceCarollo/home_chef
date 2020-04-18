@@ -9,6 +9,7 @@ class ChefsController < ApplicationController
       if @chef.errors.present?
         format.json { render json: @chef.errors, status: :unprocessable_entity }
       else
+        session[:chef_id] = @chef.id
         format.json { head :ok }
       end
     end
