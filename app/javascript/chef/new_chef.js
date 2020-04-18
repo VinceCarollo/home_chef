@@ -51,11 +51,9 @@ const newChef = () => {
           showWarning('An error occurred, please try again');
         }
       })
-      .on("ajax:success", (event, data, status, xhr) => {
-        console.log(event);
-        console.log(data);
-        console.log(status);
-        console.log(xhr);
+      .on("ajax:success", () => {
+        let front_end_url = process.env.FRONT_END_URL || 'http://localhost:3000'
+        window.location.href = front_end_url + '/chefs/dashboard'
       });
   });
 }
