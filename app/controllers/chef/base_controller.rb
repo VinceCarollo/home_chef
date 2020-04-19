@@ -1,7 +1,9 @@
 class Chef::BaseController < ApplicationController
-  before_action :authenticate
+  before_action :admin_required
 
-  def authenticate
+  protected
+  
+  def admin_required
     @chef = Chef.find_by(id: session[:chef_id])
     redirect_to '/' unless @chef
   end
