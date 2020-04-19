@@ -5,13 +5,11 @@ class ChefsController < ApplicationController
 
   def create
     @chef = Chef::CreateService.perform(chef_params)
-    respond_to do |format|
-      if @chef.errors.present?
-        format.json { render json: @chef.errors, status: :unprocessable_entity }
-      else
-        session[:chef_id] = @chef.id
-        format.json { head :ok }
-      end
+    if @chef.errors.present?
+      render json: @chef.errors, status: :unprocessable_entity
+    else
+      session[:chef_id] = @chef.id
+      head :ok
     end
   end
 
