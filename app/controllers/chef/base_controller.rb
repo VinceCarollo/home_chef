@@ -5,6 +5,6 @@ class Chef::BaseController < ApplicationController
   
   def admin_required
     @chef = Chef.find_by(id: session[:chef_id])
-    redirect_to '/' unless @chef
+    redirect_to root_path unless @chef
   end
 end
