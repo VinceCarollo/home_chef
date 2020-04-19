@@ -1,5 +1,3 @@
 class Chef::DashboardController < Chef::BaseController
-  def show
-    binding.pry
-  end
+  def show; end
 end
