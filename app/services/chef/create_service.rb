@@ -25,7 +25,7 @@ class Chef::CreateService
   def create_address(chef)
     geo_address = Geocodio::Client.new.geocode(@params[:zip]).first&.first if @params[:zip].length == 5
     if geo_address  
-      address = Address.create_or_find_by(city: geo_address.city, state: geo_address.state, zip: geo_address.zip)
+      address = Address.create_or_find_by(city: geo_address.city, state: geo_address.state, zip: geo_address.zip, street: nil)
       chef.address = address
     else
       chef.errors.add(:address, :invalid, message: "is invalid")
