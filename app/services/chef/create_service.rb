@@ -36,7 +36,7 @@ class Chef::CreateService
     # chef.unavailable = 'mon, tue, wed'
     unaval = Date::DAYNAMES.map(&:downcase).map do |day|
       day[0..2] if @params[day.to_sym] == '0'
-    end.compact.join(' ')
+    end.compact.join(', ')
 
     chef.unavailable = unaval
     chef
