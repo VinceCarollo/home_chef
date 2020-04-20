@@ -5,7 +5,7 @@ const newChef = () => {
   let passwordConf = document.getElementById("chef_password_confirmation")
 
   passwordConf.addEventListener('focusout', () => {
-    if(password.value != passwordConf.value) {
+    if (password.value != passwordConf.value) {
       showWarning('Paswords do not match')
     } else {
       removeWarning();
@@ -45,7 +45,7 @@ const newChef = () => {
         let status = e.originalEvent.detail[2].status
         let response = e.originalEvent.detail[2].response
         
-        if(status === 422) { 
+        if (status === 422) { 
           showWarning(JSON.parse(response));
         } else {
           showWarning('An error occurred, please try again');
