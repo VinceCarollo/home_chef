@@ -4,7 +4,7 @@ const newChef = () => {
   let password = document.getElementById("chef_password")
   let passwordConf = document.getElementById("chef_password_confirmation")
 
-  passwordConf.addEventListener('keyup', () => {
+  passwordConf.addEventListener('focusout', () => {
     if(password.value != passwordConf.value) {
       showWarning('Paswords do not match')
     } else {
