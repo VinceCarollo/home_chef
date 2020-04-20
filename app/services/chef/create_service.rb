@@ -1,4 +1,6 @@
 class Chef::CreateService
+  include Chef::UnavailabilityHelper
+
   def self.perform(params)
     new(params).create_chef
   end
@@ -32,13 +34,8 @@ class Chef::CreateService
   end
 
   def create_unavailability(chef)
-    # Creates strings from form checkboxes 
-    # chef.unavailable = 'mon, tue, wed'
-    unaval = Date::DAYNAMES.map(&:downcase).map do |day|
-      day[0..2] if @params[day.to_sym] == '0'
-    end.compact.join(', ')
-
-    chef.unavailable = unaval
+    unavailable = unavail_string_generator(@params.permit(:monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday))
+    chef.update(unavailable: unavailable)
     chef
   end
 end
