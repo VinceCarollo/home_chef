@@ -7,4 +7,9 @@
     <p>or</p>
     <%= button_to "Cookin", { controller: :chefs, action: "new" }, :method => :get %>
   </div>
+  <div id='login-box'>
+    <%= content_tag 'a', 'Login', class:'login-button' %><br />
+  </div>
 </home>
+
+<%= javascript_pack_tag 'login' %>
