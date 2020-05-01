@@ -28,17 +28,31 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { once: true })
 
   const startChefEmailPrompt = () => {
-    link.style.height = '220px';
+    link.style.height = '330px';
 
     let emailBox = document.createElement('INPUT');
-    let emailBoxLbl = document.createElement('P');
+    let emailBoxLbl = document.createElement('LABEL');
 
-    emailBoxLbl.innerHTML = 'Email';
-    emailBoxLbl.setAttribute("id", "login-email-lbl");
+    emailBoxLbl.innerHTML = 'Chef Email';
     emailBox.setAttribute("type", "text");
     emailBox.setAttribute("id", "email-box");
+    emailBoxLbl.setAttribute("id", "login-email-lbl");
+    emailBoxLbl.setAttribute("for", "email-box");
 
-    link.appendChild(emailBoxLbl);
-    link.appendChild(emailBox);
+    let passwordBox = document.createElement('INPUT');
+    let passwordBoxLbl = document.createElement('LABEL');
+
+    passwordBoxLbl.innerHTML = 'Password';
+    passwordBox.setAttribute("type", "password");
+    passwordBox.setAttribute("id", "password-box");
+    passwordBoxLbl.setAttribute("id", "login-password-lbl");
+    passwordBoxLbl.setAttribute("for", "password-box");
+
+    link.addEventListener('webkitTransitionEnd', () => {
+      link.appendChild(emailBoxLbl);
+      link.appendChild(emailBox);
+      link.appendChild(passwordBoxLbl);
+      link.appendChild(passwordBox);
+    });
   }
 });
