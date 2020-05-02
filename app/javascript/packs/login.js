@@ -25,10 +25,46 @@ document.addEventListener('DOMContentLoaded', () => {
     chefButton.addEventListener('click', () => {
       startChefEmailPrompt();
     })
+
+    clientButton.addEventListener('click', () => {
+      // startClientEmailPrompt();
+    })
   }, { once: true })
 
+  const startClientEmailPrompt = () => {
+    let emailBox = document.createElement('INPUT');
+    let emailBoxLbl = document.createElement('LABEL');
+
+    emailBoxLbl.innerHTML = 'Chef Email';
+    emailBox.setAttribute("type", "text");
+    emailBox.setAttribute("id", "email-box");
+    emailBoxLbl.setAttribute("id", "login-email-lbl");
+    emailBoxLbl.setAttribute("for", "email-box");
+
+    let passwordBox = document.createElement('INPUT');
+    let passwordBoxLbl = document.createElement('LABEL');
+
+    passwordBoxLbl.innerHTML = 'Password';
+    passwordBox.setAttribute("type", "password");
+    passwordBox.setAttribute("id", "password-box");
+    passwordBoxLbl.setAttribute("id", "login-password-lbl");
+    passwordBoxLbl.setAttribute("for", "password-box");
+
+    let submitButton = document.createElement('INPUT')
+
+    submitButton.setAttribute('type', 'submit')
+    submitButton.setAttribute('id', 'login-submit-button')
+    submitButton.setAttribute('value', 'Login')
+
+    link.appendChild(emailBoxLbl);
+    link.appendChild(emailBox);
+    link.appendChild(passwordBoxLbl);
+    link.appendChild(passwordBox);
+    link.appendChild(submitButton);
+  }
+
   const startChefEmailPrompt = () => {
-    link.style.height = '330px';
+    link.style.height = '350px';
 
     let emailBox = document.createElement('INPUT');
     let emailBoxLbl = document.createElement('LABEL');
@@ -48,11 +84,18 @@ document.addEventListener('DOMContentLoaded', () => {
     passwordBoxLbl.setAttribute("id", "login-password-lbl");
     passwordBoxLbl.setAttribute("for", "password-box");
 
+    let submitButton = document.createElement('INPUT')
+
+    submitButton.setAttribute('type', 'submit')
+    submitButton.setAttribute('id', 'login-submit-button')
+    submitButton.setAttribute('value', 'Login')
+
     link.addEventListener('webkitTransitionEnd', () => {
       link.appendChild(emailBoxLbl);
       link.appendChild(emailBox);
       link.appendChild(passwordBoxLbl);
       link.appendChild(passwordBox);
+      link.appendChild(submitButton);
     });
   }
 });
