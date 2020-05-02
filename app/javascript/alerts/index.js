@@ -10,7 +10,7 @@ export function showWarning(msg) {
 
       messages = messages + attributeString.charAt(0).toUpperCase() + attributeString.slice(1) + ' '
       
-      if (error.length > 1) { error = error[0] }
+      if (error.length > 1 && Array.isArray(error)) { error = error[0] }
 
       messages = messages + error + '<br /> <br />'
     }
