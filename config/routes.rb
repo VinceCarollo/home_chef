@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :chefs, only: [:new, :create]
 
-  get 'chefs/logout', to: 'chef/sessions#destroy'
+  delete 'chefs/logout', to: 'chef/sessions#destroy'
+  post 'chefs/login', to: 'chef/sessions#create'
   get 'chefs/dashboard', to: 'chef/dashboard#show'
 end

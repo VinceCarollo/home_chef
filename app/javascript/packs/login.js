@@ -1,3 +1,6 @@
+import Rails from '@rails/ujs'
+import { showWarning, removeWarning } from '../alerts';
+
 document.addEventListener('DOMContentLoaded', () => {
   const link = document.getElementById('login-box');
 
@@ -97,5 +100,30 @@ document.addEventListener('DOMContentLoaded', () => {
       link.appendChild(passwordBox);
       link.appendChild(submitButton);
     });
+
+    submitButton.addEventListener('click', () =>{
+      
+      let data = {
+        email: emailBox.value,
+        password: passwordBox.value
+      }
+      
+      Rails.ajax({
+        url: '/chefs/login.js',
+        type: 'POST',
+        cache: false,
+        contentType: 'application/json',
+        data: new URLSearchParams(data).toString(),
+        error: async (e) => {
+          showWarning(e);
+          await new Promise(r => setTimeout(r, 2000));
+          removeWarning();
+        },
+        success: () => {
+          let front_end_url = process.env.FRONT_END_URL || 'http://localhost:3000'
+          window.location.href = front_end_url + '/chefs/dashboard'
+        }
+      })
+    })
   }
 });
