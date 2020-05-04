@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   loginBox.addEventListener('click', () => {
     loginBox.style.width = '320px';
-    loginBox.style.height = '107px';
+    loginBox.style.height = '120px';
     loginBox.style.backgroundColor = 'white';
     loginBox.style.fontSize = '50px';
     loginBox.style.color = 'black';
