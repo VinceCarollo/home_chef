@@ -102,6 +102,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     submitButton.addEventListener('click', () =>{
+      if(emailBox.value == '' || passwordBox.value == '') {
+        return
+      }
       
       let data = {
         email: emailBox.value,
