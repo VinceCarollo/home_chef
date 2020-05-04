@@ -1,10 +1,10 @@
 class Chef::BaseController < ApplicationController
-  before_action :admin_required
+  before_action :authorize
 
   protected
   
-  def admin_required
-    @chef = Chef.find_by(id: session[:chef_id])
+  def authorize
+    @chef ||= Chef.find_by(id: session[:chef_id])
     redirect_to root_path unless @chef
   end
 end
