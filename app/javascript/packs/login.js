@@ -2,14 +2,14 @@ import Rails from '@rails/ujs'
 import { showWarning, removeWarning } from '../alerts';
 
 document.addEventListener('DOMContentLoaded', () => {
-  const link = document.getElementById('login-box');
+  const loginBox = document.getElementById('login-box');
 
-  link.addEventListener('click', () => {
-    link.style.width = '320px';
-    link.style.height = '107px';
-    link.style.backgroundColor = 'white';
-    link.style.fontSize = '50px';
-    link.style.color = 'black';
+  loginBox.addEventListener('click', () => {
+    loginBox.style.width = '320px';
+    loginBox.style.height = '107px';
+    loginBox.style.backgroundColor = 'white';
+    loginBox.style.fontSize = '50px';
+    loginBox.style.color = 'black';
     
     let chefButton = document.createElement('BUTTON');
     let clientButton = document.createElement('BUTTON');
@@ -20,9 +20,9 @@ document.addEventListener('DOMContentLoaded', () => {
     chefButton.innerHTML = 'Chef';
     clientButton.innerHTML = 'Client';
     
-    link.addEventListener('webkitTransitionEnd', () => {
-      link.append(chefButton);
-      link.append(clientButton);
+    loginBox.addEventListener('webkitTransitionEnd', () => {
+      loginBox.append(chefButton);
+      loginBox.append(clientButton);
     })
 
     chefButton.addEventListener('click', () => {
@@ -59,15 +59,15 @@ document.addEventListener('DOMContentLoaded', () => {
     submitButton.setAttribute('id', 'login-submit-button')
     submitButton.setAttribute('value', 'Login')
 
-    link.appendChild(emailBoxLbl);
-    link.appendChild(emailBox);
-    link.appendChild(passwordBoxLbl);
-    link.appendChild(passwordBox);
-    link.appendChild(submitButton);
+    loginBox.appendChild(emailBoxLbl);
+    loginBox.appendChild(emailBox);
+    loginBox.appendChild(passwordBoxLbl);
+    loginBox.appendChild(passwordBox);
+    loginBox.appendChild(submitButton);
   }
 
   const startChefEmailPrompt = () => {
-    link.style.height = '350px';
+    loginBox.style.height = '350px';
 
     let emailBox = document.createElement('INPUT');
     let emailBoxLbl = document.createElement('LABEL');
@@ -93,12 +93,17 @@ document.addEventListener('DOMContentLoaded', () => {
     submitButton.setAttribute('id', 'login-submit-button')
     submitButton.setAttribute('value', 'Login')
 
-    link.addEventListener('webkitTransitionEnd', () => {
-      link.appendChild(emailBoxLbl);
-      link.appendChild(emailBox);
-      link.appendChild(passwordBoxLbl);
-      link.appendChild(passwordBox);
-      link.appendChild(submitButton);
+    loginBox.addEventListener('webkitTransitionEnd', () => {
+      window.scrollTo({
+        top: 200,
+        behavior: 'smooth'
+      });
+
+      loginBox.appendChild(emailBoxLbl);
+      loginBox.appendChild(emailBox);
+      loginBox.appendChild(passwordBoxLbl);
+      loginBox.appendChild(passwordBox);
+      loginBox.appendChild(submitButton);
     });
 
     submitButton.addEventListener('click', () =>{
