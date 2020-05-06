@@ -5,6 +5,9 @@ class Chef::BaseController < ApplicationController
   
   def authorize
     @chef ||= Chef.find_by(id: session[:chef_id])
-    redirect_to root_path unless @chef
+    unless @chef
+      session[:chef_id] = nil
+      redirect_to root_path
+    end
   end
 end
