@@ -1,4 +1,6 @@
 class Chef::BaseController < ApplicationController
+  protect_from_forgery
+  
   before_action :authorize
 
   protected
