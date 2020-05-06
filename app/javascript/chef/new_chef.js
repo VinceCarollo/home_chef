@@ -52,8 +52,7 @@ const newChef = () => {
         }
       })
       .on("ajax:success", () => {
-        let front_end_url = process.env.FRONT_END_URL || 'http://localhost:3000'
-        window.location.href = front_end_url + '/chefs/dashboard'
+        window.location.href = '/chefs/dashboard'
       });
   });
 }
