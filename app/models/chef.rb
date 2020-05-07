@@ -15,4 +15,6 @@ class Chef < ApplicationRecord
             length: { minimum: 6, maximum: 20 }
 
   has_one :address, as: :addressable
+
+  delegate :city, :state, :zip, to: :address
 end

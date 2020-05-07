@@ -1,2 +1,12 @@
-<%= button_to 'Logout', chefs_logout_path, method: :delete %>
-<p style='color:white'><%= @chef.first_name %></p>
+<div id='chef-dashboard'>
+  <h1><%= "#{@chef.first_name.capitalize} #{@chef.last_name.capitalize}" %></h1>
+  <ul>
+    <li><%= @chef.email %></li>
+    <li><%= @chef.specialty.capitalize %></li>
+    <li><%= @chef.unavailable %></li>
+    <li><%= @chef.city %></li>
+    <li><%= @chef.state %></li>
+    <li><%= @chef.zip %></li>
+    <li><%= button_to 'Logout', chefs_logout_path, method: :delete %></li>
+  </ul>
+</div>
