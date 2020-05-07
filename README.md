@@ -44,6 +44,7 @@ Run
 ```
 overmind start
 ```
+and navigate to [http://localhost:5000](http://localhost:5000)
 
 ## Running the tests
 
@@ -57,6 +58,7 @@ bundle exec rspec
 * [Bundler](https://bundler.io/) - Dependency Management
 * [PostgreSQL](https://www.postgresql.org/) - Database
 * [Figaro](https://github.com/laserlemon/figaro) - Env Vars
+* [Overmind](https://github.com/DarthSim/overmind) - Process Manager
 
 
 ## Authors
