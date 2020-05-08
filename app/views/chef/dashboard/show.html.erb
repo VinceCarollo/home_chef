@@ -1,12 +1,26 @@
 <div id='chef-dashboard'>
   <h1><%= "#{@chef.first_name.capitalize} #{@chef.last_name.capitalize}" %></h1>
-  <ul>
-    <li><%= @chef.email %></li>
-    <li><%= @chef.specialty.capitalize %></li>
-    <li><%= @chef.unavailable %></li>
-    <li><%= @chef.city %></li>
-    <li><%= @chef.state %></li>
-    <li><%= @chef.zip %></li>
-    <li><%= button_to 'Logout', chefs_logout_path, method: :delete %></li>
-  </ul>
+  <div class='dash-info'>
+    <div class='self-info-header'>
+      <ul>
+        <li>Email:</li>
+        <li>Specialty:</li>
+        <li>City:</li>
+        <li>State:</li>
+        <li>Zip:</li>
+        <li>Unavailable:</li>
+      </ul>
+    </div>
+    <div class='self-info'>
+      <ul>
+        <li><%= facade.email %></li>
+        <li><%= facade.specialty %></li>
+        <li><%= facade.city %></li>
+        <li><%= facade.state %></li>
+        <li><%= facade.zip %></li>
+        <li><%= facade.unavailable %></li>
+      </ul>
+    </div>
+  </div>
+  <%= button_to 'Logout', chefs_logout_path, id:'chef-logout-button', method: :delete %>
 </div>
