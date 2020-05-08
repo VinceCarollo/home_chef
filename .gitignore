@@ -32,3 +32,6 @@ yarn-debug.log*
 
 # Ignore application configuration
 /config/application.yml
+
+# VCR
+/spec/fixtures/vcr_cassettes
