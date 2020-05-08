@@ -4,22 +4,34 @@ import { showWarning, removeWarning } from '../alerts';
 document.addEventListener('DOMContentLoaded', () => {
   const loginBox = document.getElementById('login-box');
 
-  loginBox.addEventListener('click', () => {
+  const resizeBoxForUserTypes = (box) => {
     loginBox.style.width = '320px';
     loginBox.style.height = '120px';
     loginBox.style.backgroundColor = 'white';
     loginBox.style.fontSize = '50px';
     loginBox.style.color = 'black';
-    
-    let chefButton = document.createElement('BUTTON');
-    let clientButton = document.createElement('BUTTON');
-    
-    chefButton.setAttribute('class', 'login-choices');
-    clientButton.setAttribute('class', 'login-choices');
-    
-    chefButton.innerHTML = 'Chef';
-    clientButton.innerHTML = 'Client';
-    
+  }
+
+  const createButtonFor = (userType) => {
+    if (userType === 'chef') {
+      let button = document.createElement('BUTTON');
+      button.setAttribute('class', 'login-choices')
+      button.innerHTML = 'Chef'
+      return button
+    } else {
+      let button = document.createElement('BUTTON');
+      button.setAttribute('class', 'login-choices')
+      button.innerHTML = 'Client'
+      return button
+    }
+  }
+
+  loginBox.addEventListener('click', () => {
+    resizeBoxForUserTypes();
+
+    let chefButton = createButtonFor('chef')
+    let clientButton = createButtonFor('client')
+        
     loginBox.addEventListener('webkitTransitionEnd', () => {
       loginBox.append(chefButton);
       loginBox.append(clientButton);
@@ -34,64 +46,66 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   }, { once: true })
 
-  const startClientEmailPrompt = () => {
-    let emailBox = document.createElement('INPUT');
-    let emailBoxLbl = document.createElement('LABEL');
+  const createEmailInput = () => {
+    let input = document.createElement('INPUT');
+    input.setAttribute("type", "text");
+    input.setAttribute("id", "email-box");
+    return input
+  }
 
-    emailBoxLbl.innerHTML = 'Chef Email';
-    emailBox.setAttribute("type", "text");
-    emailBox.setAttribute("id", "email-box");
-    emailBoxLbl.setAttribute("id", "login-email-lbl");
-    emailBoxLbl.setAttribute("for", "email-box");
+  const createEmailInputLblFor = (userType) => {
+    if (userType === 'chef') {
+      let Lbl = document.createElement('LABEL');
+      Lbl.innerHTML = 'Chef Email';
+      Lbl.setAttribute("id", "login-email-lbl");
+      Lbl.setAttribute("for", "email-box");
+      return Lbl
+    } else {
+      let Lbl = document.createElement('LABEL');
+      Lbl.innerHTML = 'Client Email';
+      Lbl.setAttribute("id", "login-email-lbl");
+      Lbl.setAttribute("for", "email-box");
+      return Lbl
+    }
+  }
 
-    let passwordBox = document.createElement('INPUT');
-    let passwordBoxLbl = document.createElement('LABEL');
+  const createPasswordInput = () => {
+    let input = document.createElement('INPUT');
+    input.setAttribute("type", "password");
+    input.setAttribute("id", "password-box");
+    return input
+  }
 
-    passwordBoxLbl.innerHTML = 'Password';
-    passwordBox.setAttribute("type", "password");
-    passwordBox.setAttribute("id", "password-box");
-    passwordBoxLbl.setAttribute("id", "login-password-lbl");
-    passwordBoxLbl.setAttribute("for", "password-box");
+  const createPasswordInputLbl = () => {
+    let Lbl = document.createElement('LABEL');
+    Lbl.innerHTML = 'Password';
+    Lbl.setAttribute("id", "login-password-lbl");
+    Lbl.setAttribute("for", "password-box");
+    return Lbl
+  }
 
-    let submitButton = document.createElement('INPUT')
+  const createSubmitButton = () => {
+    let button = document.createElement('INPUT')
+    button.setAttribute('type', 'submit')
+    button.setAttribute('id', 'login-submit-button')
+    button.setAttribute('value', 'Login')
+    return button
+  }
 
-    submitButton.setAttribute('type', 'submit')
-    submitButton.setAttribute('id', 'login-submit-button')
-    submitButton.setAttribute('value', 'Login')
-
-    loginBox.appendChild(emailBoxLbl);
-    loginBox.appendChild(emailBox);
-    loginBox.appendChild(passwordBoxLbl);
-    loginBox.appendChild(passwordBox);
-    loginBox.appendChild(submitButton);
+  const appendLoginBoxChild = (elements) => {
+    elements.forEach((elem) => { loginBox.appendChild(elem) })
   }
 
   const startChefEmailPrompt = () => {
     loginBox.style.height = '350px';
 
-    let emailBox = document.createElement('INPUT');
-    let emailBoxLbl = document.createElement('LABEL');
+    let emailInput = createEmailInput();
+    let emailInputLbl = createEmailInputLblFor('chef');
 
-    emailBoxLbl.innerHTML = 'Chef Email';
-    emailBox.setAttribute("type", "text");
-    emailBox.setAttribute("id", "email-box");
-    emailBoxLbl.setAttribute("id", "login-email-lbl");
-    emailBoxLbl.setAttribute("for", "email-box");
+    let passwordInput = createPasswordInput();
+    let passwordInputLbl = createPasswordInputLbl();
 
-    let passwordBox = document.createElement('INPUT');
-    let passwordBoxLbl = document.createElement('LABEL');
-
-    passwordBoxLbl.innerHTML = 'Password';
-    passwordBox.setAttribute("type", "password");
-    passwordBox.setAttribute("id", "password-box");
-    passwordBoxLbl.setAttribute("id", "login-password-lbl");
-    passwordBoxLbl.setAttribute("for", "password-box");
-
-    let submitButton = document.createElement('INPUT')
-
-    submitButton.setAttribute('type', 'submit')
-    submitButton.setAttribute('id', 'login-submit-button')
-    submitButton.setAttribute('value', 'Login')
+    let submitButton = createSubmitButton();
 
     loginBox.addEventListener('webkitTransitionEnd', () => {
       window.scrollTo({
@@ -99,21 +113,17 @@ document.addEventListener('DOMContentLoaded', () => {
         behavior: 'smooth'
       });
 
-      loginBox.appendChild(emailBoxLbl);
-      loginBox.appendChild(emailBox);
-      loginBox.appendChild(passwordBoxLbl);
-      loginBox.appendChild(passwordBox);
-      loginBox.appendChild(submitButton);
+      appendLoginBoxChild([emailInputLbl, emailInput, passwordInputLbl, passwordInput, submitButton])
     });
 
     submitButton.addEventListener('click', () =>{
-      if(emailBox.value == '' || passwordBox.value == '') {
+      if (emailInput.value == '' || passwordInput.value == '') {
         return
       }
       
       let data = {
-        email: emailBox.value,
-        password: passwordBox.value
+        email: emailInput.value,
+        password: passwordInput.value
       }
       
       Rails.ajax({
