@@ -26,6 +26,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  const listenForButtonChoice = (chefButton, clientButton) => {
+    chefButton.addEventListener('click', () => {
+      startChefEmailPrompt();
+    })
+
+    clientButton.addEventListener('click', () => {
+      // startClientEmailPrompt();
+    })
+  }
+
   loginBox.addEventListener('click', () => {
     resizeBoxForUserTypes();
 
@@ -37,13 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
       loginBox.append(clientButton);
     })
 
-    chefButton.addEventListener('click', () => {
-      startChefEmailPrompt();
-    })
-
-    clientButton.addEventListener('click', () => {
-      // startClientEmailPrompt();
-    })
+    listenForButtonChoice(chefButton, clientButton);
   }, { once: true })
 
   const createEmailInput = () => {
@@ -116,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
       appendLoginBoxChild([emailInputLbl, emailInput, passwordInputLbl, passwordInput, submitButton])
     });
 
-    submitButton.addEventListener('click', () =>{
+    const submitForm = () =>{
       if (emailInput.value == '' || passwordInput.value == '') {
         return
       }
@@ -141,6 +145,13 @@ document.addEventListener('DOMContentLoaded', () => {
           window.location.href = '/chefs/dashboard'
         }
       })
-    })
+    }
+
+    submitButton.addEventListener('click', submitForm);
+    document.addEventListener('keypress', (e) => {
+      if (e.which == 13 || e.keyCode == 13) {
+        submitForm();
+      }
+    });
   }
 });
