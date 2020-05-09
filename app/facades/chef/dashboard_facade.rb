@@ -25,6 +25,10 @@ class Chef::DashboardFacade
     @chef.zip
   end
 
+  def self_description
+    @chef.self_description
+  end
+
   def unavailable
     return 'None' if @chef.unavailable.nil?
     unavail_to_readable(@chef.unavailable)

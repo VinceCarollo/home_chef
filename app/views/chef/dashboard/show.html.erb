@@ -21,6 +21,10 @@
         <li><%= facade.unavailable %></li>
       </ul>
     </div>
+    <div id='chef-self-desc'>
+      <h3>Self Description</h3>
+      <p><%= facade.self_description %></p>
+    </div>
   </div>
   <%= button_to 'Logout', chefs_logout_path, id:'chef-logout-button', method: :delete %>
 </div>
