@@ -1,5 +1,6 @@
 class Chef::CreateService
   include Chef::UnavailabilityHelper
+  include GeocodeHelper
 
   def self.perform(params)
     new(params).create_chef
@@ -19,13 +20,14 @@ class Chef::CreateService
   private
 
   def chef_create_params
-    @params.except(:monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday, :zip)
+    @params.except(:monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday, :zip_code)
   end
 
   def create_address(chef)
-    geo_address = Geocodio::Client.new.geocode(@params[:zip]).first&.first if @params[:zip].length == 5
-    if geo_address  
-      address = Address.create_or_find_by(city: geo_address.city, state: geo_address.state, zip: geo_address.zip, street: nil)
+    geo_response = get_geo_response_from_zip(@params[:zip_code])
+    
+    if geo_response
+      address = Address.create_or_find_by(city: geo_response.city, state: geo_response.state, zip: geo_response.zip, street: nil)
       chef.update(address: address)
     else
       chef.errors.add(:address, :invalid, message: "is invalid")

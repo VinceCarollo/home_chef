@@ -23,7 +23,7 @@
   <%= f.label 'Please Write a Breif Description of Yourself and Your Cooking', class:'new-chef-label' %>
   <%= f.text_area :self_description, class:'new-chef-input self-description' %>
   <p class='new-chef-label'>Please provide your zip code and how far you are willing to travel</p><br />
-  <%= f.text_field :zip, class:'new-chef-input new-chef-zip' %>
+  <%= f.text_field :zip_code, class:'new-chef-input new-chef-zip' %>
   <%= f.select :travel_distance, options_for_select(10..100), class:'new-chef-input new-chef-distance' %>miles
   <p id='unavailable-question'>On which days of the week can you commit to being a HomeChef?</p>
   <%= f.check_box :monday, class:'new-chef-input day-checkbox' %>

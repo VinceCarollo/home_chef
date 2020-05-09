@@ -23,7 +23,7 @@ class ChefsController < ApplicationController
       :first_name,
       :last_name,
       :age,
-      :zip,
+      :zip_code,
       :travel_distance,
       :years_of_pro_experience,
       :years_of_am_experience,
