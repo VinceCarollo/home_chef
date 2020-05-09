@@ -25,10 +25,11 @@ class Chef::CreateService
 
   def create_address(chef)
     geo_response = get_geo_response_from_zip(@params[:zip_code])
-    
+
     if geo_response
-      address = Address.create_or_find_by(city: geo_response.city, state: geo_response.state, zip: geo_response.zip, street: nil)
-      chef.update(address: address)
+      chef.update(
+        address: Address.create_or_find_by(city: geo_response.city, state: geo_response.state, zip: geo_response.zip, street: nil)
+      )
     else
       chef.errors.add(:address, :invalid, message: "is invalid")
     end
