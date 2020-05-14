@@ -1,4 +1,6 @@
 class WelcomeController < ApplicationController
+  skip_before_action :authorize, only: :index
+
   def index
     @chef = Chef.find_by(id: session[:chef_id])
     if @chef

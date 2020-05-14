@@ -1,4 +1,6 @@
 class Chef::SessionsController < ApplicationController
+  skip_before_action :authorize, only: :create
+
   def destroy
     session[:chef_id] = nil
     redirect_to root_path
