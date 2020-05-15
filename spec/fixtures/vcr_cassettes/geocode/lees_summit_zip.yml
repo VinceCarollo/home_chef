@@ -1,0 +1,72 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://api.geocod.io/v1.2/geocode?api_key=<GEOCODIO_API_KEY>
+    body:
+      encoding: UTF-8
+      string: '"64086"'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.16.1
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Cache-Control:
+      - no-cache, private
+      Date:
+      - Fri, 15 May 2020 03:32:10 GMT
+      X-Billable-Lookups-Count:
+      - '1'
+      X-Billable-Fields-Count:
+      - '0'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, POST
+      Access-Control-Allow-Headers:
+      - Content-Type
+      Access-Control-Expose-Headers:
+      - Request-Handler
+      Request-Handler:
+      - api69
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Robots-Tag:
+      - none
+      X-Ratelimit-Remaining:
+      - '999'
+      X-Ratelimit-Limit:
+      - '1000'
+      X-Ratelimit-Period:
+      - '60'
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"results":[{"query":"64086","response":{"input":{"address_components":{"zip":"64086","country":"US"},"formatted_address":"64086"},"results":[{"address_components":{"city":"Lees
+        Summit","county":"Jackson County","state":"MO","zip":"64086","country":"US"},"formatted_address":"Lees
+        Summit, MO 64086","location":{"lat":38.944006,"lng":-94.288086},"accuracy":1,"accuracy_type":"place","source":"TIGER\/Line\u00ae
+        dataset from the US Census Bureau"}],"_warnings":["There is a newer API version
+        available, please consider upgrading to v1.5. See changelog here: https:\/\/www.geocod.io\/docs\/#changelog"]}}]}'
+    http_version: null
+  recorded_at: Fri, 15 May 2020 03:32:10 GMT
+recorded_with: VCR 5.1.0
