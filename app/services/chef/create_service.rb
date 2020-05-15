@@ -12,8 +12,8 @@ class Chef::CreateService
 
   def create_chef
     chef = Chef.create(chef_create_params)
-    chef = create_unavailability(chef)
-    chef = create_address(chef) unless chef.errors.present?
+    create_unavailability(chef)
+    create_address(chef) unless chef.errors.present?
     chef
   end
 
@@ -33,13 +33,9 @@ class Chef::CreateService
     else
       chef.errors.add(:address, :invalid, message: "is invalid")
     end
-    chef  
   end
 
   def create_unavailability(chef)
-    weekday_choices = @params.select{|par, _val| Date::DAYNAMES.map(&:downcase).include?(par.to_s) }
-    unavailable = unavail_string_generator(weekday_choices)
-    chef.update(unavailable: unavailable)
-    chef
+    chef.update(unavailable: unavail_string_generator(@params))
   end
 end
