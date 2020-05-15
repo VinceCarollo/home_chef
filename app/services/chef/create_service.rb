@@ -37,7 +37,7 @@ class Chef::CreateService
   end
 
   def create_unavailability(chef)
-    weekday_choices = @params.select{|par, _val| Date::DAYNAMES.map(&:downcase).include?(par) }
+    weekday_choices = @params.select{|par, _val| Date::DAYNAMES.map(&:downcase).include?(par.to_s) }
     unavailable = unavail_string_generator(weekday_choices)
     chef.update(unavailable: unavailable)
     chef
