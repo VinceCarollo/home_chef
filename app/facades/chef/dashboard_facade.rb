@@ -5,6 +5,10 @@ class Chef::DashboardFacade
     @chef = chef
   end
 
+  def id
+    @chef.id
+  end
+
   def email
     @chef.email.capitalize
   end

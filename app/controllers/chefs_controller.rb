@@ -1,4 +1,6 @@
 class ChefsController < ApplicationController
+  skip_before_action :authorize, only: [:new, :create]
+
   def new
     @chef = Chef.new
   end
@@ -10,6 +12,14 @@ class ChefsController < ApplicationController
     else
       session[:chef_id] = @chef.id
       head :ok
+    end
+  end
+
+  def update
+    if @chef.update(chef_params)
+      head :ok
+    else
+      render json: @chef.errors, status: :unprocessable_entity
     end
   end
 
