@@ -1,4 +1,4 @@
-import { showWarning, removeWarning } from '../alerts/index'
+import showMsg from '../messages/index'
 
 const newChef = () => {
   let password = document.getElementById("chef_password")
@@ -6,19 +6,13 @@ const newChef = () => {
 
   passwordConf.addEventListener('focusout', () => {
     if (password.value != passwordConf.value) {
-      showWarning('Paswords do not match')
-    } else {
-      removeWarning();
+      showMsg('Paswords Do Not Match', 'warning')
     }
   })
 
-  password.addEventListener('keyup', () => {
-    if (passwordConf.value != '') {
-      if (password.value != passwordConf.value) {
-        showWarning('Paswords do not match')
-      } else {
-        removeWarning();
-      }
+  password.addEventListener('focusout', () => {
+    if (passwordConf.value != '' && password.value != passwordConf.value) {
+      showMsg('Passwords Do Not Match', 'warning')
     }
   })
 
@@ -37,7 +31,7 @@ const newChef = () => {
         if (mondayBox || tuesdayBox || wednesdayBox || thursdayBox || fridayBox || saturdayBox || sundayBox) {
           return true
         } else {
-          showWarning('You must be available atleast one day')
+          showMsg('You Must be Available Atleast One Day', 'warning')
           return false
         }
       })
@@ -46,9 +40,9 @@ const newChef = () => {
         let response = e.originalEvent.detail[2].response
         
         if (status === 422) { 
-          showWarning(JSON.parse(response));
+          showMsg(JSON.parse(response));
         } else {
-          showWarning('An error occurred, please try again');
+          showMsg('An Error Occurred, Please Try Again Later', 'error');
         }
       })
       .on("ajax:success", () => {

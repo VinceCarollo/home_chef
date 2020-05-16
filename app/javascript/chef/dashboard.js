@@ -1,5 +1,4 @@
-import Rails from '@rails/ujs'
-import { showWarning, removeWarning } from '../alerts/index'
+import showMsg from '../messages/index'
 
 const chefDashboard = () => {
   let descEditButton = document.getElementById('self_desc_edit_button');
@@ -32,19 +31,15 @@ const chefDashboard = () => {
           type: 'PATCH',
           contentType: 'application/json',
           data: JSON.stringify(data),
-          error: async (e) => {
-            showWarning(e.responseJSON);
-            await new Promise(r => setTimeout(r, 2000));
-            removeWarning();
+          error: (e) => {
+            showMsg(e.responseJSON);
           },
-          success: async () => {
-            showWarning('Your self description has been updated')
+          success: () => {
+            showMsg('Your Self Description Has Been Updated', 'success')
             desc.innerHTML = editableDesc.value;
             desc.style.display = 'block';
             editableDesc.remove();
             saveButton.remove();
-            await new Promise(r => setTimeout(r, 2000));
-            removeWarning();
             listenForEditPress();
           }
         })

@@ -1,5 +1,5 @@
 import Rails from '@rails/ujs'
-import { showWarning, removeWarning } from '../alerts';
+import showMsg from '../messages';
 
 document.addEventListener('DOMContentLoaded', () => {
   const loginBox = document.getElementById('login-box');
@@ -136,10 +136,12 @@ document.addEventListener('DOMContentLoaded', () => {
         cache: false,
         contentType: 'application/json',
         data: new URLSearchParams(data).toString(),
-        error: async (e) => {
-          showWarning(e);
-          await new Promise(r => setTimeout(r, 2000));
-          removeWarning();
+        error: (e, status) => {
+          if (status === 'Unauthorized') {
+            showMsg('Invalid Login', 'error')
+          } else {
+            showMsg('An Error Occurred', 'error')
+          }
         },
         success: () => {
           window.location.href = '/chefs/dashboard'
