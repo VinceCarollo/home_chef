@@ -10,10 +10,7 @@
   </head>
 
   <body>
-    <div id='alert'>
-      <p id='alert-message'></p>
-      <span id='closebtn' onclick="this.parentElement.style.display='none';">&times;</span> 
-    </div>
+    <%= toastr_flash %>
     <%= yield %>
   </body>
 </html>
