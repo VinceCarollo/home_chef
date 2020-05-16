@@ -1,5 +1,5 @@
 class ChefsController < ApplicationController
-  skip_before_action :authorize, only: [:new, :create]
+  skip_before_action :authorize, only: [:new, :create, :confirm_email]
 
   def new
     @chef = Chef.new
@@ -20,6 +20,20 @@ class ChefsController < ApplicationController
       head :ok
     else
       render json: @chef.errors, status: :unprocessable_entity
+    end
+  end
+
+  def confirm_email
+    chef = Chef.find_by(confirm_token: params[:id])
+    if chef
+      chef.update(
+        confirm_token: nil,
+        email_confirmed: true
+      )
+      session[:chef_id] = chef.id
+      redirect_to chefs_dashboard_path
+    else
+      redirect_to root_path
     end
   end
 
