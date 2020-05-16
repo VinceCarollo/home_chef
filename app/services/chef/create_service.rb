@@ -8,16 +8,21 @@ class Chef::CreateService
 
   def initialize(params)
     @params = params
+    @chef = Chef.create(chef_create_params)
   end
 
   def create_chef
-    chef = Chef.create(chef_create_params)
-    create_unavailability(chef)
-    create_address(chef) unless chef.errors.present?
-    chef
+    create_unavailability(@chef) unless creation_errors?
+    create_address(@chef) unless creation_errors?
+    ChefMailer.with(chef: @chef).registration_confirmation.deliver_now unless creation_errors?
+    @chef
   end
 
   private
+
+  def creation_errors?
+    @chef.errors.present?
+  end
 
   def chef_create_params
     @params.except(:monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday, :zip_code)

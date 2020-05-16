@@ -47,5 +47,20 @@ RSpec.describe Chef::CreateService, type: :service do
       expect(chef.travel_distance).to eq(params[:travel_distance].to_i)
       expect(chef.unavailable).to eq('sun, sat')
     end
+
+    describe 'registration email' do
+      it 'successfully sends' do
+        VCR.use_cassette("geocode/lees_summit_zip") do
+          expect { perform }.to change { ActionMailer::Base.deliveries.count }.from(0).to(1)
+        end
+      end
+
+      it 'does not send on error' do
+        VCR.use_cassette("geocode/lees_summit_zip") do
+          params[:password_confirmation] = 'non matching'
+          expect { perform }.to_not change { ActionMailer::Base.deliveries.count }
+        end
+      end
+    end
   end
 end
