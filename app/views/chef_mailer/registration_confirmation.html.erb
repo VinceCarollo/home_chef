@@ -1,3 +1,43 @@
-<%= @chef.first_name %>
-<%= @chef.confirm_token %>
-<%= confirm_email_chef_url(@chef.confirm_token) %>
+<div id='chef-registration-email'>
+  <h1>Thanks for signing up to be a HomeChef!</h1>
+  <a href=<%= confirm_email_chef_url(@chef.confirm_token) %> ><%= image_pack_tag 'BWpan.png' %></a>
+  <a href=<%= confirm_email_chef_url(@chef.confirm_token) %> >Click to register your email!</a>
+</div>
+
+<style>
+  h1 {
+    padding: 50px 0px 20px 0px;
+    font-size: 40px
+  }
+
+  img {
+    width: 200px;
+    height: 200px;
+    display: block;
+    margin: auto
+  }
+
+  a {
+    text-decoration: none;
+    font-size: 20px;
+    border-radius: 2px
+  }
+
+  a:hover {
+    background-color: white;
+    color: black;
+  }
+
+  h1, a {
+    font-family: 'Ropa Sans', sans-serif;
+    color: white;
+  }
+
+  #chef-registration-email {
+    text-align: center;
+    background-color: black;
+    height: 800px;
+    width: 700px;
+    margin: auto;
+  }
+</style>
