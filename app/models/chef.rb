@@ -19,4 +19,12 @@ class Chef < ApplicationRecord
   has_one :address, as: :addressable
 
   delegate :city, :state, :zip, to: :address
+
+  before_create :create_confirmation_token
+
+  private
+
+  def create_confirmation_token
+    self.confirm_token = SecureRandom.urlsafe_base64.to_s unless confirm_token
+  end
 end
