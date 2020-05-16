@@ -9,7 +9,7 @@ RSpec.describe ChefMailer, type: :mailer do
     end
 
     it 'renders email' do
-      expect(mail.subject).to eq('Registration Confirmation')
+      expect(mail.subject).to eq('HomeChef Registration Confirmation')
       expect(mail.to).to eq([chef.email])
       expect(mail.from).to eq(['HomeChef@no-reply.com'])
     end
