@@ -1,5 +1,3 @@
-import toastr from 'toastr'
-
 export default function showMsg(msg, type) {
   if (typeof msg === 'object') {
     // For resource errors
