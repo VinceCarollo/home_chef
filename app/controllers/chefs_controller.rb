@@ -31,6 +31,7 @@ class ChefsController < ApplicationController
         email_confirmed: true
       )
       session[:chef_id] = chef.id
+      flash[:notice] = 'Your Email was Successfully Verified'
       redirect_to chefs_dashboard_path
     else
       redirect_to root_path
