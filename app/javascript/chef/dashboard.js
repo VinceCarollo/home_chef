@@ -19,6 +19,7 @@ const chefDashboard = () => {
       selfDescBox.insertBefore(saveButton, descEditButton)
 
       saveButton.addEventListener('click', () => {
+        var AUTH_TOKEN = encodeURIComponent($('meta[name=csrf-token]').attr('content'));
         let chefId = selfDescBox.getAttribute('data-chef');
         let data = {
           chef: {
@@ -27,7 +28,7 @@ const chefDashboard = () => {
         }        
         
         $.ajax({
-          url: '/chefs/'.concat(chefId),
+          url: '/chefs/'.concat(chefId) + "?&authenticity_token=" + AUTH_TOKEN,
           type: 'PATCH',
           contentType: 'application/json',
           data: JSON.stringify(data),
