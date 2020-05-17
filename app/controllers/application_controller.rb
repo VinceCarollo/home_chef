@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
       session[:chef_id] = nil
       redirect_to root_path
     else
-      flash[:notice] = "You Must Verify Your Email Address to Use All of Our Tools" unless @chef.email_confirmed
+      flash[:alert] = "You Must Verify Your Email Address to Use All of Our Tools" unless @chef.email_confirmed
     end
   end
 end
