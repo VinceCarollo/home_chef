@@ -29,6 +29,14 @@ class Chef::DashboardFacade
     @chef.zip
   end
 
+  def has_photo?
+    @chef.pro_pic.attachment
+  end
+
+  def profile_pic
+    @chef.pro_pic
+  end
+
   def self_description
     @chef.self_description
   end

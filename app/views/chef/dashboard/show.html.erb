@@ -1,5 +1,8 @@
 <div id='chef-dashboard'>
   <h1><%= "#{@chef.first_name.capitalize} #{@chef.last_name.capitalize}" %></h1>
+  <% if facade.has_photo? %>
+    <%= image_tag facade.profile_pic, class: 'profile-pic' %>
+  <% end %>
   <div class='dash-info'>
     <div class='self-info-header'>
       <ul>
