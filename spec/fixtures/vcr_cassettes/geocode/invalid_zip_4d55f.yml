@@ -1,0 +1,69 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://api.geocod.io/v1.2/geocode?api_key=<GEOCODIO_API_KEY>
+    body:
+      encoding: UTF-8
+      string: '"4d55f"'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.16.1
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Cache-Control:
+      - no-cache, private
+      Date:
+      - Sun, 17 May 2020 04:17:12 GMT
+      X-Billable-Lookups-Count:
+      - '0'
+      X-Billable-Fields-Count:
+      - '0'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, POST
+      Access-Control-Allow-Headers:
+      - Content-Type
+      Access-Control-Expose-Headers:
+      - Request-Handler
+      Request-Handler:
+      - api85
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Robots-Tag:
+      - none
+      X-Ratelimit-Remaining:
+      - '999'
+      X-Ratelimit-Limit:
+      - '1000'
+      X-Ratelimit-Period:
+      - '60'
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"results":[{"query":"4d55f","response":{"error":"Could not geocode
+        address. Postal code or city required.","results":[]}}]}'
+    http_version: null
+  recorded_at: Sun, 17 May 2020 04:17:12 GMT
+recorded_with: VCR 5.1.0
