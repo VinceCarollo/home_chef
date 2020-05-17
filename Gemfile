@@ -35,10 +35,10 @@ group :development, :test do
   gem 'rspec-rails', '~> 4.0.0'
   gem 'factory_bot_rails'
   gem 'pry'
-  gem 'shoulda-matchers'
 end
 
 group :test do
+  gem 'shoulda-matchers'
   gem 'vcr'
   gem 'webmock'
 end
