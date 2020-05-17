@@ -48,6 +48,36 @@ RSpec.describe Chef::CreateService, type: :service do
       expect(chef.unavailable).to eq('sun, sat')
     end
 
+    describe 'address' do
+      let(:correct_address) do
+        {
+          city: 'Lees Summit',
+          state: 'MO',
+          zip: '64086'
+        }
+      end
+
+      it 'updates chefs address' do
+        VCR.use_cassette("geocode/lees_summit_zip") do
+          perform
+        end
+        chef = Chef.last
+        expect(chef.city).to eq(correct_address[:city])
+        expect(chef.state).to eq(correct_address[:state])
+        expect(chef.zip).to eq(correct_address[:zip])
+      end
+
+      it 'adds error with bad zip' do
+        params[:zip_code] = '4d55f'
+
+        VCR.use_cassette("geocode/invalid_zip_4d55f") do
+          chef = perform
+          expect(chef.errors).to have_key(:address)
+          expect(chef.errors[:address]).to include('is invalid')
+        end
+      end
+    end
+
     describe 'registration email' do
       it 'successfully sends' do
         VCR.use_cassette("geocode/lees_summit_zip") do
