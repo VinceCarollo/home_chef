@@ -49,6 +49,7 @@ class ChefsController < ApplicationController
       :last_name,
       :age,
       :zip_code,
+      :pro_pic,
       :travel_distance,
       :years_of_pro_experience,
       :years_of_am_experience,
