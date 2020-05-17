@@ -1,6 +1,50 @@
 require 'rails_helper'
 
 RSpec.describe ChefsController, type: :controller do
+  describe 'update' do
+    let!(:chef) { FactoryBot.create(:chef) }
+
+    before do
+      session[:chef_id] = chef.id
+    end
+
+    describe 'successful' do
+      let(:params) { { email: 'new_email@test.com' }  }
+
+      before do
+        put :update, params: { id: chef.id, chef: params }
+        chef.reload
+      end
+
+      it 'returns ok' do
+        expect(response).to have_http_status(:ok)
+      end
+
+      it 'updates chef' do
+        expect(chef.email).to eq(params[:email])
+      end
+    end
+
+    describe 'unsuccessful' do
+      let(:params) { { email: 'invalid_email' }  }
+
+      before do
+        put :update, params: { id: chef.id, chef: params }
+        chef.reload
+      end
+
+      it 'returns unprocessable' do
+        expect(response).to have_http_status(:unprocessable_entity)
+      end
+
+      it 'renders errors' do
+        errors = JSON.parse(response.body, symbolize_names: true)
+        expect(errors).to have_key(:email)
+        expect(errors[:email]).to include('is invalid')
+      end
+    end
+  end
+
   describe 'create' do
     let(:chef) { double(Chef, id: 13, errors: nil) }
 
