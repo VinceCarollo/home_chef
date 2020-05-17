@@ -1,6 +1,46 @@
 require 'rails_helper'
 
 RSpec.describe ChefsController, type: :controller do
+  describe 'confirm_email' do
+    let!(:chef) { FactoryBot.create(:chef) }
+    let!(:bad_token) { 'XXxBadTokenxXX' }
+    
+    describe 'successful' do
+      before do
+        get :confirm_email, params: { id: chef.confirm_token }
+      end
+      
+      it 'updates the chef' do
+        chef.reload
+        expect(chef.confirm_token).to be nil
+        expect(chef.email_confirmed).to be true
+      end
+
+      it 'sets the session' do
+        expect(session).to have_key(:chef_id)
+        expect(session[:chef_id]).to eq(chef.id)
+      end
+
+      it 'adds flash notice' do
+        expect(flash[:notice]).to eq('Your Email was Successfully Verified')
+      end
+
+      it 'redirects to dashboard' do
+        expect(response).to redirect_to(chefs_dashboard_path)
+      end
+    end
+
+    describe 'unsuccessful' do
+      before do
+        get :confirm_email, params: { id: bad_token }
+      end
+
+      it 'redirects to root path' do
+        expect(response).to redirect_to(root_path)
+      end
+    end
+  end
+
   describe 'update' do
     let!(:chef) { FactoryBot.create(:chef) }
 
