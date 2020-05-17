@@ -6,9 +6,9 @@ class ChefsController < ApplicationController
   end
 
   def create
-    @chef = Chef::CreateService.perform(chef_params)
-    if @chef.errors.present?
-      render json: @chef.errors, status: :unprocessable_entity
+    chef = Chef::CreateService.perform(chef_params)
+    if chef.errors.present?
+      render json: chef.errors, status: :unprocessable_entity
     else
       session[:chef_id] = @chef.id
       head :ok
