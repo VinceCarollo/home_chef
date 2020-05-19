@@ -2,7 +2,51 @@ import showMsg from '../messages/index'
 
 const chefDashboard = () => {
   let descEditButton = document.getElementById('self_desc_edit_button');
-  let selfDescBox = document.getElementById('chef-self-desc')
+  let selfDescBox = document.getElementById('chef-self-desc');
+  
+  const listenForAvatarUploadPress = () => {
+    let avatarModalButton = document.getElementsByClassName('avatar-modal-button')[0];
+    let modal = document.getElementsByClassName("modal")[0];
+    
+    avatarModalButton.addEventListener('click', () => {
+      modal.style.display = 'block';
+      
+      let closeButton = document.getElementsByClassName("close")[0];
+      let fileInput = document.getElementById('avatar-input');
+
+      fileInput.addEventListener('change', () => {
+        if ( fileInput.files && fileInput.files[0]) {
+          let reader = new FileReader();
+          let preview = document.getElementById('avatar-preview');
+          let saveButton = document.createElement('BUTTON');
+
+          saveButton.innerHTML = 'Save';
+          saveButton.setAttribute('class', 'avatar-save-button')
+
+          preview.style.display = 'block';
+
+          reader.onload = function (e) {
+            preview.setAttribute('src', e.target.result);
+          }
+
+          let modalContent = document.getElementsByClassName('modal-content')[0]
+
+          modalContent.append(saveButton)
+          reader.readAsDataURL(fileInput.files[0]);
+        }
+      })
+
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }
+
+      closeButton.addEventListener('click', () => {
+        modal.style.display = "none";
+      })
+    })
+  }
 
   const listenForEditPress = () => {
     descEditButton.addEventListener('click', () => {
@@ -50,6 +94,7 @@ const chefDashboard = () => {
   }
 
   listenForEditPress();
+  listenForAvatarUploadPress();
 }
 
 export default chefDashboard

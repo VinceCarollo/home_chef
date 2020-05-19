@@ -1,6 +1,14 @@
 <div id='chef-dashboard'>
   <h1><%= "#{@chef.first_name.capitalize} #{@chef.last_name.capitalize}" %></h1>
   <div class='avatar-box'>
+    <div class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>Let People See You!</p>
+        <input type='file' name='avatar' id='avatar-input' >
+        <img id="avatar-preview" src="#" class='avatar' onerror="this.style.display='none'" />
+      </div>
+    </div>
     <% if facade.has_photo? %>
       <%= image_tag facade.profile_pic, class: 'avatar' %>
     <% else %>
@@ -9,7 +17,6 @@
         <div class='avatar-modal-button'>
           <p>Upload</p>
         </div>
-
       </div>
     <% end %>
   </div>
@@ -17,20 +24,20 @@
     <div class='self-info-header'>
       <ul>
         <li>Email:</li>
-        <li>Specialty:</li>
         <li>City:</li>
         <li>State:</li>
         <li>Zip:</li>
+        <li>Specialty:</li>
         <li>Unavailable:</li>
       </ul>
     </div>
     <div class='self-info'>
       <ul>
         <li><%= facade.email %></li>
-        <li><%= facade.specialty %></li>
         <li><%= facade.city %></li>
         <li><%= facade.state %></li>
         <li><%= facade.zip %></li>
+        <li><%= facade.specialty %></li>
         <li><%= facade.unavailable %></li>
       </ul>
     </div>
