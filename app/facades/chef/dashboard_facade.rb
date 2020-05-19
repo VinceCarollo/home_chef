@@ -30,11 +30,11 @@ class Chef::DashboardFacade
   end
 
   def has_photo?
-    @chef.pro_pic.attachment
+    @chef.avatar.attachment
   end
 
   def profile_pic
-    @chef.pro_pic
+    @chef.avatar
   end
 
   def self_description

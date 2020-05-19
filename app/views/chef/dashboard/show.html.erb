@@ -1,11 +1,11 @@
 <div id='chef-dashboard'>
   <h1><%= "#{@chef.first_name.capitalize} #{@chef.last_name.capitalize}" %></h1>
   <% if facade.has_photo? %>
-    <%= image_tag facade.profile_pic, class: 'profile-pic' %>
+    <%= image_tag facade.profile_pic, class: 'avatar-box' %>
   <% else %>
     <div class='update-box'>
       <p>Upload a Photo to Let People See You</p>
-      <%= file_field(:user, :pro_pic)%>
+      <%= file_field(:user, :avatar)%>
     </div>
   <% end %>
   <div class='dash-info'>

@@ -1,6 +1,6 @@
 class Chef < ApplicationRecord
   has_secure_password
-  has_one_attached :pro_pic
+  has_one_attached :avatar
 
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, 
             presence: true, 
