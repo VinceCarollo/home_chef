@@ -31,7 +31,12 @@ const chefDashboard = () => {
 
           let modalContent = document.getElementsByClassName('modal-content')[0]
 
-          modalContent.append(saveButton)
+          console.log(document.getElementsByClassName('avatar-save-button').length);
+          
+          if (document.getElementsByClassName('avatar-save-button').length === 0) {
+            modalContent.append(saveButton)
+          }
+
           reader.readAsDataURL(fileInput.files[0]);
         }
       })
