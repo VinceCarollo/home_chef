@@ -12,32 +12,19 @@ const chefDashboard = () => {
       modal.style.display = 'block';
       
       let closeButton = document.getElementsByClassName("close")[0];
-      let fileInput = document.getElementById('avatar-input');
+      let fileInput = document.getElementById('chef_avatar');
 
       fileInput.addEventListener('change', () => {
         if ( fileInput.files && fileInput.files[0]) {
           let reader = new FileReader();
           let preview = document.getElementById('avatar-preview');
-          let saveButton = document.createElement('BUTTON');
-
-          saveButton.innerHTML = 'Save';
-          saveButton.setAttribute('class', 'avatar-save-button')
 
           preview.style.display = 'block';
 
+          reader.readAsDataURL(fileInput.files[0]);          
           reader.onload = function (e) {
-            preview.setAttribute('src', e.target.result);
+            preview.src = e.target.result;
           }
-
-          let modalContent = document.getElementsByClassName('modal-content')[0]
-
-          console.log(document.getElementsByClassName('avatar-save-button').length);
-          
-          if (document.getElementsByClassName('avatar-save-button').length === 0) {
-            modalContent.append(saveButton)
-          }
-
-          reader.readAsDataURL(fileInput.files[0]);
         }
       })
 
@@ -51,21 +38,31 @@ const chefDashboard = () => {
         modal.style.display = "none";
       })
     })
+
+    $('#chef-avatar-form')
+      .on("ajax:error", (e) => {
+        showMsg('An Error Occurred, Please Try Again Later', 'error');
+      })
+      .on("ajax:success", async () => {
+        showMsg('Successfully Save Profile Picture', 'success');
+        await new Promise(r => setTimeout(r, 1000));
+        window.location.reload();
+      })
   }
 
   const listenForEditPress = () => {
     descEditButton.addEventListener('click', () => {
       let desc = document.getElementById('chef-self-description');
       let editableDesc = document.createElement('TEXTAREA');
-      let saveButton = document.createElement('BUTTON')
+      let saveButton = document.createElement('BUTTON');
   
-      saveButton.setAttribute('type', 'submit')
-      saveButton.innerHTML = 'Save'
+      saveButton.setAttribute('type', 'submit');
+      saveButton.innerHTML = 'Save';
   
       editableDesc.value = desc.textContent;
-      desc.style.display = 'none'
-      selfDescBox.insertBefore(editableDesc, descEditButton)
-      selfDescBox.insertBefore(saveButton, descEditButton)
+      desc.style.display = 'none';
+      selfDescBox.insertBefore(editableDesc, descEditButton);
+      selfDescBox.insertBefore(saveButton, descEditButton);
 
       saveButton.addEventListener('click', () => {
         var AUTH_TOKEN = encodeURIComponent($('meta[name=csrf-token]').attr('content'));
@@ -98,8 +95,11 @@ const chefDashboard = () => {
     }, { once: true })
   }
 
+  
+  if (document.getElementsByClassName('avatar-modal-button').length === 1) {
+    listenForAvatarUploadPress();
+  }
   listenForEditPress();
-  listenForAvatarUploadPress();
 }
 
 export default chefDashboard

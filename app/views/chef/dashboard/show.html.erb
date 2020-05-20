@@ -5,8 +5,11 @@
       <div class="modal-content">
         <span class="close">&times;</span>
         <p>Let People See You!</p>
-        <input type='file' name='avatar' id='avatar-input' >
-        <img id="avatar-preview" src="#" class='avatar' onerror="this.style.display='none'" />
+        <%= form_with model: @chef, id:'chef-avatar-form' do |f| %>
+          <%= f.file_field :avatar, class:'avatar-file-upload-button' %>
+          <img id="avatar-preview" src="#" class='avatar' onerror="this.style.display='none'" />
+          <%= f.submit 'Save', class: 'avatar-upload-button' %>
+        <% end %>
       </div>
     </div>
     <% if facade.has_photo? %>
