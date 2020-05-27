@@ -13,15 +13,9 @@ RSpec.describe Client, type: :model do
       let!(:address) { FactoryBot.create(:address) }
       let!(:client) { FactoryBot.create(:client, address: address) }
 
-      it 'city' do
+      it 'delegates city state and zip to address' do
         expect(client.city).to eq(address.city)
-      end
-
-      it 'state' do
         expect(client.state).to eq(address.state)
-      end
-
-      it 'zip' do
         expect(client.zip).to eq(address.zip)
       end
     end
