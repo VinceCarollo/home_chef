@@ -1,12 +1,12 @@
 <div class='new-chef-form-container'>
   <h1>Sign up to be added to HomeChef's list of local Chefs</h1>
   <%= form_with model: @chef, id:'new-chef-form' do |f| %>
-  <%= f.label :email , class:'new-chef-label'%>
-  <%= f.text_field :email, class:'new-chef-input' %>
   <%= f.label :first_name , class:'new-chef-label'%>
   <%= f.text_field :first_name, class:'new-chef-input' %>
   <%= f.label :last_name , class:'new-chef-label'%>
   <%= f.text_field :last_name, class:'new-chef-input' %>
+  <%= f.label :email , class:'new-chef-label'%>
+  <%= f.text_field :email, class:'new-chef-input' %>
   <%= f.label :password , class:'new-chef-label'%>
   <%= f.password_field :password, class:'new-chef-input' %>
   <%= f.label :password_confirmation , class:'new-chef-label'%>

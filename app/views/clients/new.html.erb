@@ -1,0 +1,16 @@
+<div class='new-client-form-container'>
+  <h1>Sign up to Find Local Chefs for Hire!</h1>
+  <%= form_with model: @client, id:'new-client-form' do |f| %>
+    <%= f.label :first_name, class:'new-client-label' %>
+    <%= f.text_field :first_name, class:'new-client-input' %>
+    <%= f.label :last_name, class:'new-client-label' %>
+    <%= f.text_field :last_name, class:'new-client-input' %>
+    <%= f.label :email, class:'new-client-label' %>
+    <%= f.text_field :email, class:'new-client-input' %>
+    <%= f.label :password , class:'new-client-label'%>
+    <%= f.password_field :password, class:'new-client-input' %>
+    <%= f.label :password_confirmation , class:'new-client-label'%>
+    <%= f.password_field :password_confirmation, class:'new-client-input' %><br />
+    <%= f.submit 'Sign Up', class:'sign-up-button' %><br /><br />
+  <% end %>
+</div>

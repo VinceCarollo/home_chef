@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :clients, only: :new
+
   delete 'chefs/logout', to: 'chef/sessions#destroy'
   post 'chefs/login', to: 'chef/sessions#create'
   get 'chefs/dashboard', to: 'chef/dashboard#show'

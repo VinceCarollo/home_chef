@@ -3,7 +3,7 @@
   <h4>find your chef</h4>
   <p class='question'>Are you?</p>
   <div class='buttons'>
-    <button>Lookin</button>
+    <%= button_to "Lookin", { controller: :clients, action: "new" }, :method => :get %>
     <p>or</p>
     <%= button_to "Cookin", { controller: :chefs, action: "new" }, :method => :get %>
   </div>
