@@ -4,12 +4,12 @@ RSpec.describe ChefsController, type: :controller do
   describe 'confirm_email' do
     let!(:chef) { FactoryBot.create(:chef) }
     let!(:bad_token) { 'XXxBadTokenxXX' }
-    
+
     describe 'successful' do
       before do
         get :confirm_email, params: { id: chef.confirm_token }
       end
-      
+
       it 'updates the chef' do
         chef.reload
         expect(chef.confirm_token).to be nil
@@ -49,7 +49,7 @@ RSpec.describe ChefsController, type: :controller do
     end
 
     describe 'successful' do
-      let(:params) { { email: 'new_email@test.com' }  }
+      let(:params) { { email: 'new_email@test.com' } }
 
       before do
         put :update, params: { id: chef.id, chef: params }
@@ -66,7 +66,7 @@ RSpec.describe ChefsController, type: :controller do
     end
 
     describe 'unsuccessful' do
-      let(:params) { { email: 'invalid_email' }  }
+      let(:params) { { email: 'invalid_email' } }
 
       before do
         put :update, params: { id: chef.id, chef: params }

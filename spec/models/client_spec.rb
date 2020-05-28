@@ -24,7 +24,7 @@ RSpec.describe Client, type: :model do
   describe 'callbacks' do
     describe 'create_confirmation_token' do
       let!(:client) { FactoryBot.build(:client) }
-      
+
       it 'creates token before create' do
         expect { client.save }.to change { client.confirm_token }.from(nil)
       end

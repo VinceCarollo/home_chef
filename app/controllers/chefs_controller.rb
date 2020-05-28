@@ -1,5 +1,5 @@
 class ChefsController < ApplicationController
-  skip_before_action :authorize, only: [:new, :create, :confirm_email]
+  skip_before_action :authorize, only: %i[new create confirm_email]
 
   def new
     @chef = Chef.new

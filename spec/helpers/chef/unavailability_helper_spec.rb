@@ -10,10 +10,10 @@ RSpec.describe Chef::UnavailabilityHelper, type: :helper do
         'thursday': '1',
         'friday': '1',
         'saturday': '0', # Unavailable
-        'sunday': '0', # Unavailable
+        'sunday': '0' # Unavailable
       }
     end
-    
+
     it 'turns form input into chef unavailable string' do
       expect(helper.unavail_string_generator(form_input))
         .to eq('sun, sat')

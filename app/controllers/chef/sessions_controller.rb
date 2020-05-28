@@ -12,7 +12,7 @@ class Chef::SessionsController < ApplicationController
       session[:chef_id] = chef.id
       head :ok
     else
-      render json: { invalid: 'login - please try again'}, status: 401
+      render json: { invalid: 'login - please try again' }, status: 401
     end
   end
 end

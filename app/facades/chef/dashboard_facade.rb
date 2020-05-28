@@ -43,6 +43,7 @@ class Chef::DashboardFacade
 
   def unavailable
     return 'None' if @chef.unavailable.nil?
+
     unavail_to_readable(@chef.unavailable)
   end
 end

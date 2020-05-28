@@ -1,4 +1,4 @@
-require "rails_helper"
+require 'rails_helper'
 
 RSpec.describe ChefMailer, type: :mailer do
   let!(:chef) { FactoryBot.create(:chef) }
