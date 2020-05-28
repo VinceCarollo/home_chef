@@ -2,6 +2,7 @@ AllCops:
   Exclude:
     - 'bin/bundle'
     - 'node_modules/**/*'
+    - '.git/**/*'
   DisplayCopNames: true
   Rails:
     Enabled: true
