@@ -1,2 +1,29 @@
+AllCops:
+  Exclude:
+    - 'bin/bundle'
+    - 'node_modules/**/*'
+  DisplayCopNames: true
+  Rails:
+    Enabled: true
+
 Style/FrozenStringLiteralComment:
   Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/PerceivedComplexity:
+  Enabled: false
+

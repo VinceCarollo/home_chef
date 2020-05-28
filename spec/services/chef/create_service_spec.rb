@@ -88,7 +88,8 @@ RSpec.describe Chef::CreateService, type: :service do
       it 'does not send on error' do
         VCR.use_cassette('geocode/lees_summit_zip') do
           params[:password_confirmation] = 'non matching'
-          expect { perform }.to_not change { ActionMailer::Base.deliveries.count }
+          perform
+          expect(ActionMailer::Base.deliveries.count).to eq(0)
         end
       end
     end

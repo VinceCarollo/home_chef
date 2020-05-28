@@ -29,11 +29,11 @@ class Chef::DashboardFacade
     @chef.zip
   end
 
-  def has_photo?
+  def avatar?
     @chef.avatar.attachment
   end
 
-  def profile_pic
+  def avatar
     @chef.avatar
   end
 

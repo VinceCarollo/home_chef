@@ -12,8 +12,8 @@
         <% end %>
       </div>
     </div>
-    <% if facade.has_photo? %>
-      <%= image_tag facade.profile_pic, class: 'avatar' %>
+    <% if facade.avatar? %>
+      <%= image_tag facade.avatar, class: 'avatar' %>
     <% else %>
       <div class='update-box'>
         <p>Upload a Profile Picture</p>

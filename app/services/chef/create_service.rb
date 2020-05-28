@@ -33,7 +33,12 @@ class Chef::CreateService
 
     if geo_response
       chef.update(
-        address: Address.create_or_find_by(city: geo_response.city, state: geo_response.state, zip: geo_response.zip, street: nil)
+        address: Address.create_or_find_by(
+          city: geo_response.city,
+          state: geo_response.state,
+          zip: geo_response.zip,
+          street: nil
+        )
       )
     else
       chef.errors.add(:address, :invalid, message: 'is invalid')
