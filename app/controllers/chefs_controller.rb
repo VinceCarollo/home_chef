@@ -16,7 +16,6 @@ class ChefsController < ApplicationController
   end
 
   def update
-    # binding.pry
     if @chef.update(chef_params)
       head :ok
     else
