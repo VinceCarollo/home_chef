@@ -12,26 +12,10 @@ RSpec.describe Chef, type: :model do
       expect(chef.update(email: '')).to be false
     end
 
-    it 'first_name' do
-      expect(chef.update(first_name: '')).to be false
-      expect(chef.update(first_name: nil)).to be false
-    end
-    
-    it 'last_name' do
-      expect(chef.update(last_name: '')).to be false
-      expect(chef.update(last_name: nil)).to be false
-    end
-
-    it 'self_description' do
-      expect(chef.update(self_description: '')).to be false
-      expect(chef.update(self_description: nil)).to be false
-    end
-
-    it 'specialty' do
-      expect(chef.update(specialty: '')).to be false
-      expect(chef.update(specialty: nil)).to be false
-    end
-
+    it { should validate_presence_of(:first_name) }
+    it { should validate_presence_of(:last_name) }
+    it { should validate_presence_of(:self_description) }
+    it { should validate_presence_of(:specialty) }
     it { should validate_length_of(:password).is_at_least(6).is_at_most(20) }
   end
 
