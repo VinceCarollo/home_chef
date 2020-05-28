@@ -29,7 +29,7 @@ const newChef = () => {
         }
       })
       .on("ajax:success", () => {
-        console.log('success');
+        window.location.href = '/clients/dashboard'
       });
   });
 }
