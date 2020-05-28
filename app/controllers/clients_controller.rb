@@ -1,7 +1,9 @@
 class ClientsController < ApplicationController
   skip_before_action :authorize, only: %i[new create]
 
-  def new; end
+  def new
+    @client = Client.new
+  end
 
   def create
     client = Client.new(client_params)
