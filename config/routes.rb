@@ -14,4 +14,5 @@ Rails.application.routes.draw do
   get 'chefs/dashboard', to: 'chef/dashboard#show'
 
   get 'clients/dashboard', to: 'client/dashboard#show'
+  delete 'clients/logout', to: 'client/sessions#destroy'
 end
