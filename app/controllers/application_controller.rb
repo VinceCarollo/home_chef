@@ -6,8 +6,8 @@ class ApplicationController < ActionController::Base
   protected
 
   def authorize
-    @chef = Chef.find_by_id(session[:chef_id])
-    @client = Client.find_by_id(session[:client_id])
+    @chef ||= Chef.find_by_id(session[:chef_id])
+    @client ||= Client.find_by_id(session[:client_id])
     if @chef || @client
       unless @chef&.email_confirmed || @client&.email_confirmed
         flash[:alert] = 'You Must Verify Your Email Address to Use All of Our Tools'
