@@ -1,5 +1,5 @@
 class Chef::SessionsController < ApplicationController
-  skip_before_action :authorize, only: :create
+  skip_before_action :authorize, only: %i[create new]
 
   def destroy
     session[:chef_id] = nil
@@ -10,9 +10,12 @@ class Chef::SessionsController < ApplicationController
     chef = Chef.find_by(email: params[:email])
     if chef&.authenticate(params[:password])
       session[:chef_id] = chef.id
-      head :ok
+      redirect_to chefs_dashboard_path
     else
-      render json: { invalid: 'login - please try again' }, status: 401
+      flash[:alert] = 'Invalid Login Credentials'
+      render :new
     end
   end
+
+  def new; end
 end
