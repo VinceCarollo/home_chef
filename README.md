@@ -17,7 +17,7 @@ These instructions will get you a copy of the project up and running on your loc
 ```
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
-brew install postgresql rbenv node
+brew install postgresql rbenv node yarn
 brew install tmux
 brew install overmind
 ```
