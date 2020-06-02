@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
     clientButton.addEventListener('click', () => {
+      window.location.href = '/clients/login'
     })
   }
 

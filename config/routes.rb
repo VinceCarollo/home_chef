@@ -16,4 +16,6 @@ Rails.application.routes.draw do
 
   get 'clients/dashboard', to: 'client/dashboard#show'
   delete 'clients/logout', to: 'client/sessions#destroy'
+  post 'clients/login', to: 'client/sessions#create'
+  get 'clients/login', to: 'client/sessions#new'
 end
