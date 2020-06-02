@@ -19,7 +19,7 @@ RSpec.describe Chef::SessionsController, type: :controller do
     it 'logs chefs in and redirects to dashboard' do
       post :create, params: credentials
       expect(session[:chef_id]).to eq(chef.id)
-      expect(response).to have_http_status(:ok)
+      expect(response).to redirect_to(:chefs_dashboard)
     end
 
     it 'will not login with bad email' do
@@ -28,12 +28,7 @@ RSpec.describe Chef::SessionsController, type: :controller do
       post :create, params: credentials
 
       expect(session[:chef_id]).to be nil
-      expect(response).to have_http_status(:unauthorized)
-
-      error = JSON.parse(response.body)
-
-      expect(error).to have_key('invalid')
-      expect(error['invalid']).to eq('login - please try again')
+      expect(flash[:alert]).to eq('Invalid Login Credentials')
     end
 
     it 'will not login with bad password' do
@@ -41,12 +36,8 @@ RSpec.describe Chef::SessionsController, type: :controller do
 
       post :create, params: credentials
 
-      expect(response).to have_http_status(:unauthorized)
-
-      error = JSON.parse(response.body)
-
-      expect(error).to have_key('invalid')
-      expect(error['invalid']).to eq('login - please try again')
+      expect(session[:chef_id]).to be nil
+      expect(flash[:alert]).to eq('Invalid Login Credentials')
     end
   end
 end
