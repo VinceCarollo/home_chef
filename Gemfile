@@ -38,8 +38,8 @@ group :development, :test do
 end
 
 group :test do
-  gem 'simplecov', require: false
   gem 'shoulda-matchers'
+  gem 'simplecov', require: false
   gem 'vcr'
   gem 'webmock'
 end
