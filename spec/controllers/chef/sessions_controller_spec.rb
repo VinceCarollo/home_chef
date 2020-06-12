@@ -40,7 +40,7 @@ RSpec.describe Chef::SessionsController, type: :controller do
       expect(flash[:alert]).to eq('Invalid Login Credentials')
     end
   end
-  
+
   describe 'destroy' do
     before do
       session[:chef_id] = 1234

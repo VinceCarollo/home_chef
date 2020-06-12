@@ -48,7 +48,7 @@ class ChefsController < ApplicationController
   private
 
   def find_chefs
-    binding.pry
+    # binding.pry
   end
 
   def chef_params

@@ -3,6 +3,7 @@ AllCops:
     - 'bin/bundle'
     - 'node_modules/**/*'
     - '.git/**/*'
+    - 'db/**/*'
   DisplayCopNames: true
   Rails:
     Enabled: true
