@@ -1,9 +1,6 @@
 import showMsg from '../../messages/index'
 
 const chefDashboard = () => {
-  let descEditButton = document.getElementById('self_desc_edit_button');
-  let selfDescBox = document.getElementById('chef-self-desc');
-  
   const listenForAvatarUploadPress = () => {
     let avatarModalButton = document.getElementsByClassName('avatar-modal-button')[0];
     let modal = document.getElementsByClassName("modal")[0];
@@ -51,6 +48,9 @@ const chefDashboard = () => {
   }
 
   const listenForEditPress = () => {
+    let descEditButton = document.getElementById('self_desc_edit_button');
+    let selfDescBox = document.getElementById('chef-self-desc');
+    
     descEditButton.addEventListener('click', () => {
       let desc = document.getElementById('chef-self-description');
       let editableDesc = document.createElement('TEXTAREA');

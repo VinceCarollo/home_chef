@@ -14,6 +14,11 @@
     </div>
     <% if facade.avatar? %>
       <%= image_tag facade.avatar, class: 'avatar' %>
+      <div class='update-box'>
+        <div class='avatar-modal-button'>
+          <p>Change Picture</p>
+        </div>
+      </div>
     <% else %>
       <div class='update-box'>
         <p>Upload a Profile Picture</p>
