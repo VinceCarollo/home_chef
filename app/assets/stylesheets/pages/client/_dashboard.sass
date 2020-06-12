@@ -18,6 +18,11 @@
     cursor: pointer
     margin-top: 40px
 
+    &:hover
+      animation-name: find-chefs-button
+      animation-fill-mode: forwards
+      animation-duration: 1s
+
     p 
       padding-top: 8px
 
@@ -30,3 +35,7 @@
 
   #client-logout-button
     margin-top: 60px
+
+
+@keyframes find-chefs-button
+  to {width: 300px}
