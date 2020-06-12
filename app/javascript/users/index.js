@@ -1,6 +1,7 @@
 import newClient from './client/new_client';
 import newChef from './chef/new_chef';
 import chefDashboard from './chef/dashboard'
+import clientDashboard from './client/dashboard'
 
 document.addEventListener('DOMContentLoaded', () => {
   if (Object.keys(document.getElementsByClassName("new-client-form-container")).length) {
@@ -9,5 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     newChef();
   } else if (document.getElementById('chef-dashboard')) {
     chefDashboard();
+  } else if (document.getElementById('client-dashboard')) {
+    clientDashboard();
   }
 });
