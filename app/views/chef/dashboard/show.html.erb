@@ -44,6 +44,8 @@
         <li><%= facade.unavailable %></li>
       </ul>
     </div>
+    <div class='password-change-box'>
+    </div>
     <div id='chef-self-desc' data-chef=<%= facade.id %> >
       <h3>Self Description</h3>
       <p id='chef-self-description'><%= facade.self_description %></p>
@@ -55,4 +57,4 @@
   <%= button_to 'Logout', chefs_logout_path, id:'chef-logout-button', method: :delete %>
 </div>
 
-<%= javascript_pack_tag 'chef' %>
+<%= javascript_pack_tag 'users' %>

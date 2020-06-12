@@ -1,4 +1,4 @@
-import showMsg from '../messages/index'
+import showMsg from '../../messages/index'
 
 const chefDashboard = () => {
   let descEditButton = document.getElementById('self_desc_edit_button');

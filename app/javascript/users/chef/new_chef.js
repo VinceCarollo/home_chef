@@ -1,4 +1,4 @@
-import showMsg from '../messages/index'
+import showMsg from '../../messages/index'
 
 const newChef = () => {
   let password = document.getElementById("chef_password")
