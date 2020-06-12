@@ -1,3 +1,5 @@
+[![VinceCarollo](https://circleci.com/gh/VinceCarollo/home_chef.svg?style=svg)](https://circleci.com/gh/VinceCarollo/home_chef)
+
 # HomeChef
 
 App to track personal Chef home appointments
