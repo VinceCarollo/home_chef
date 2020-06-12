@@ -2,8 +2,7 @@ export default function showMsg(msg, type) {
   if (typeof msg === 'object') {
     // For resource errors
     Object.entries(msg).forEach((error) => {
-      let combinedError = error[0] + ' ' + error[1][0]
-      let formattedError = combinedError.replace('_', ' ')
+      let formattedError = (error[0] + ' ' + error[1][0]).replace('_', ' ')
       toastr.warning(formattedError)
     })
   } else {
