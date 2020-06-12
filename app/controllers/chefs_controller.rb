@@ -23,6 +23,13 @@ class ChefsController < ApplicationController
     end
   end
 
+  def index
+    respond_to do |format|
+      format.html
+      format.json { find_chefs }
+    end
+  end
+
   def confirm_email
     chef = Chef.find_by(confirm_token: params[:id])
     if chef
@@ -39,6 +46,10 @@ class ChefsController < ApplicationController
   end
 
   private
+
+  def find_chefs
+    binding.pry
+  end
 
   def chef_params
     params.require(:chef).permit(

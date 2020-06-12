@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root to: 'welcome#index'
 
-  resources :chefs, only: %i[new create update] do
+  resources :chefs, only: %i[new create update index] do
     member do
       get :confirm_email
     end
